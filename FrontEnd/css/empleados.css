@@ -1,0 +1,166 @@
+* {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9; /* gris clarito */
+    }
+
+    /* Header */
+    header {
+      background-color: #0d3c61;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 200px;
+      height: auto;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .contenido {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      padding: 32px 2px;
+    }
+
+    /* Títulos */
+    h2 {
+      color: #0d3c61;
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+
+    /* Estilos para la tabla */
+    .tabla-empleados {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      margin-top: 20px; 
+    }
+
+    .tabla-empleados th, .tabla-empleados td {
+      padding: 8px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .tabla-empleados th {
+      background-color: #0d3c61;
+      color: white;
+    }
+
+    .acciones {
+      display: flex;
+      gap: 8px;
+    }
+
+    .editar-btn {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      background-color: #007bff ;
+      color: white;
+    }
+
+    .editar-btn:hover {
+      background-color: #63b5f6 ;
+    }
+
+    .eliminar-btn { /* Ocultamos el botón "Eliminar" */
+      display: none;
+    }
+
+    .filtros {
+      display: none; /* Ocultamos completamente el div de filtros */
+    }
+
+    /* Footer */
+    footer {
+      background-color: #63b5f6;
+      color: #000;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px;
+      font-size: 16px;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+      flex: 1 1 300px;
+      margin: 10px;
+    }
+
+    .footer-right img {
+      width: 130px;
+      height: auto;
+      margin: 10px;
+    }
+
+    .scroll-top {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Botón Volver Atrás */
+    .volver-atras-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #0d3c61;
+      color: rgb(224, 211, 211);
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 24px 0 0 24px; /* solo margen a la izquierda */
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      transition: background 0.2s;
+      outline: none;
+    }
+    .volver-atras-btn:hover, .volver-atras-btn:focus {
+      background-color: #0056b3;
+    }
+    .volver-atras-icon {
+      font-size: 22px;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .logo img {
+        width: 20vw;
+      }
+
+      .footer-right img {
+        width: 80px;
+      }
+    }

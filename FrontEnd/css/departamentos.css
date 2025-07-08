@@ -1,0 +1,262 @@
+* {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    header {
+      background-color: #0d3c61;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo img {
+      width: 200px;
+      height: auto;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .contenido {
+      margin: 0 auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      padding: 32px 16px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0d3c61;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .crear-departamento {
+      background-color: #007bff ;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 5px;
+      padding: 10px 22px;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: block;
+    }
+
+    .crear-departamento:hover {
+      background-color: #63b5f6;
+    }
+
+    /* Tabla de departamentos */
+    .tabla-departamentos {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    .tabla-departamentos th, .tabla-departamentos td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    .tabla-departamentos th {
+      background-color: #0d3c61;
+      color: white;
+    }
+
+    .acciones {
+      display: flex;
+      gap: 8px;
+    }
+
+    .editar-btn, .eliminar-btn {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .editar-btn {
+      background-color: #007bff ;
+      color: rgb(0, 0, 0);
+    }
+
+    .editar-btn:hover {
+      background-color: #63b5f6 ;
+    }
+
+    .eliminar-btn {
+      background-color: #d32f2f;
+      color:rgb(0, 0, 0);
+    }
+
+    .eliminar-btn:hover {
+      background-color: #c62828;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #63b5f6;
+      color: #000;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px;
+      font-size: 16px;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+      flex: 1 1 300px;
+      margin: 10px;
+    }
+
+    .footer-right img {
+      width: 130px;
+      height: auto;
+      margin: 10px;
+    }
+
+    .scroll-top {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Botón Volver Atrás */
+    .volver-atras-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #0d3c61;
+      color: rgb(224, 211, 211);
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 24px 0 0 24px; /* solo margen a la izquierda */
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      transition: background 0.2s;
+      outline: none;
+    }
+
+    .volver-atras-btn:hover, .volver-atras-btn:focus {
+      background-color: #0056b3;
+    }
+
+    .volver-atras-icon {
+      font-size: 22px;
+    }
+
+    /* Estilos para el modal */
+    #modal-crear-dpto {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.25);
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    #form-crear-dpto {
+      background: #fff;
+      padding: 32px 24px;
+      border-radius: 10px;
+      min-width: 320px;
+      max-width: 90vw;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    #form-crear-dpto h3 {
+      margin: 0 0 12px 0;
+      text-align: center;
+      color: #0d3c61;
+    }
+
+    #form-crear-dpto label {
+      font-weight: bold;
+      color: #555;
+      font-size: 18px;
+      align-self: flex-start;
+    }
+
+    #form-crear-dpto input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 100%;
+      min-width: 220px;
+    }
+
+    .modal-btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .modal-crear-btn {
+      background: #007bff;
+      color: #fff;
+      padding: 10px 28px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .modal-crear-btn:hover {
+      background: #0056b3;
+    }
+
+    .modal-cancelar-btn {
+      background: #e57373;
+      color: #fff;
+      padding: 10px 28px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .modal-cancelar-btn:hover {
+      background: #c62828;
+    }

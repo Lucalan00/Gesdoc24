@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Departamentos - Dir. Gral de Estadística y Censo</title>
+  
+  <link rel="stylesheet" href="departamentos.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="imagenes/logo.png" alt="Logo">
+    </div>
+  </header>
+
+  <!-- Botón Volver Atrás -->
+  <button 
+    onclick="window.history.back()" 
+    aria-label="Volver atrás">
+    Volver Atrás
+  </button>
+
+  <!-- Botón para abrir el modal de crear departamento -->
+  <button id="btn-abrir-modal" type="button">Crear Departamento</button>
+
+  <!-- Modal Crear Departamento -->
+  <div id="modal-crear-dpto">
+    <form id="form-crear-dpto">
+      <h3>Crear Departamento</h3>
+      <label for="nombre-dpto">Nombre del Departamento</label>
+      <input type="text" id="nombre-dpto" name="nombre" required />
+      <div class="modal-btn-group">
+        <button type="submit" class="modal-crear-btn">Crear</button>
+        <button type="button" id="cancelar-modal" class="modal-cancelar-btn">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Si necesitas un segundo modal, usa un ID diferente -->
+  <div id="modal-crear-dpto-2">
+    <form id="form-crear-dpto-2">
+      <h3>Crear Departamento</h3>
+      <label for="nombre-dpto-2">Nombre del Departamento</label>
+      <input type="text" id="nombre-dpto-2" name="nombre" required />
+      <div class="modal-btn-group">
+        <button type="submit" class="modal-crear-btn">Crear</button>
+        <button type="button" id="cancelar-modal-2" class="modal-cancelar-btn">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <table class="tabla-departamentos">
+    <thead>
+      <tr>
+        <th>Nombre del Departamento</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-departamentos">
+      <!-- Se llenará dinámicamente -->
+    </tbody>
+  </table>
+
+  <footer>
+    <div class="footer-left">
+      <p><strong>Acerca de…</strong></p>
+      <p>
+        Somos el organismo rector y coordinador de todas las actividades estadísticas oficiales en Santiago del Estero.
+      </p>
+    </div>
+    <div class="footer-center">
+      <p><strong>Ubicación</strong></p>
+      <p>
+        Garibaldi N° 44, 3º piso<br />
+        contacto@estadisticade.gob.ar<br />
+        +90 385 421777
+      </p>
+    </div>
+    <div class="footer-right">
+      <img src="imagenes/santiago.png" alt="Santiago del Estero">
+      <img src="imagenes/indec.png" alt="INDEC">
+    </div>
+    <div class="scroll-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑</div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("http://localhost:5001/departamento/getdepartamentos")
+        .then(response => response.json())
+        .then(data => {
+          const tabla = document.getElementById("tabla-departamentos");
+          tabla.innerHTML = "";
+
+          data.forEach(departamento => {
+            const fila = document.createElement("tr");
+            const nombre = document.createElement("td");
+            nombre.textContent = departamento.nombre;
+            const acciones = document.createElement("td");
+            acciones.className = "acciones";
+            const editarBtn = document.createElement("button");
+            editarBtn.textContent = "Editar";
+            editarBtn.className = "editar-btn";
+            // Función para redirigir a la página de edición de un departamento
+            editarBtn.onclick = () => window.location.href = `editar_departamento.html?id=${departamento.id_dpto}`;
+
+            acciones.appendChild(editarBtn);
+
+            fila.appendChild(nombre);
+            fila.appendChild(acciones);
+
+            tabla.appendChild(fila);
+          });
+        })
+        .catch(error => console.error("Error cargando departamentos:", error));
+    });
+
+    // Script para el modal de crear departamento
+    const btnAbrirModal = document.getElementById("btn-abrir-modal");
+    const modalCrearDpto = document.getElementById("modal-crear-dpto");
+    const cancelarModal = document.getElementById("cancelar-modal");
+    // Si hay un segundo botón cancelar, también lo manejamos
+    const cancelarModal2 = document.getElementById("cancelar-modal-2");
+    const formCrearDpto = document.getElementById("form-crear-dpto");
+
+    btnAbrirModal.addEventListener("click", () => {
+      modalCrearDpto.style.display = "flex";
+    cancelarModal.addEventListener("click", () => {
+      modalCrearDpto.style.display = "none";
+      formCrearDpto.reset();
+    });
+    if (cancelarModal2) {
+      cancelarModal2.addEventListener("click", () => {
+        modalCrearDpto.style.display = "none";
+        formCrearDpto.reset();
+      });
+    }
+      formCrearDpto.reset();
+    });
+
+    formCrearDpto.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre-dpto').value.trim();
+      if (!nombre) return alert('Ingrese un nombre');
+
+      try {
+        const token = localStorage.getItem('token');
+        const res = await fetch('http://localhost:5001/departamento/createdepartamento', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+          },
+          body: JSON.stringify({ nombre })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message || data.error || 'Error al crear departamento');
+        
+        modalCrearDpto.style.display = 'none';
+        formCrearDpto.reset();
+        // Recargar la tabla
+        location.reload();
+      } catch (err) {
+        alert('Error: ' + err.message);
+      }
+    });
+  </script>
+
+</body>
+</html>

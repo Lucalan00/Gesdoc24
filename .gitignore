@@ -1,0 +1,35 @@
+# Dependencias de Node.js (backend)
+/backend/node_modules
+/backend/.env
+
+# Archivos de depuración y logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+log/
+
+# Directorios de compilación/cache
+dist/
+build/
+.cache/
+
+# Carpetas de compilación/distribución del frontend (si aplica)
+/frontend/dist/
+/frontend/build/
+
+# Archivos del sistema operativo
+.DS_Store # macOS
+Thumbs.db # Windows
+*.tmp
+
+# Archivos de configuración de editores de código (opcional)
+.vscode/ # Configuración de VS Code (ignorar si no quieres compartirla)
+*.sublime-project
+*.sublime-workspace
+.idea/ # Directorio de configuración de IntelliJ/WebStorm
+
+# Archivos temporales o de backup
+*~
+*.bak
+*.swp

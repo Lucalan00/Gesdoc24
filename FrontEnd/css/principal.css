@@ -1,0 +1,146 @@
+* {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9; 
+    }
+
+    header {
+      background-color: #0d3c61;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 200px;
+      height: auto;
+    }
+    
+    .user-info {
+      display: none;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .user-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgb(249, 249, 218);
+      color: #0d3c61;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .logout-icon {
+      width: 30px;
+      height: 30px;
+      max-width: 40px;
+      max-height: 40px;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .opciones {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .opcion {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      flex: 1 1 250px;
+      max-width: 300px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .opcion:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .opcion h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: #333;
+    }
+
+    .opcion p {
+      color: #555;
+      font-size: 18px;
+    }
+
+    footer {
+      background-color: #63b5f6;
+      color: #000;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px;
+      font-size: 16px;
+      position: relative;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+      font-size: 16px;
+      flex: 1 1 300px;
+      margin: 10px;
+    }
+
+    .footer-right img {
+      width: 130px;
+      height: auto;
+      margin: 10px;
+    }
+
+    .scroll-top {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+/* Diseño responsive para móviles */
+    @media (max-width: 768px) {
+      .logo img {
+        width: 35vw;
+      }
+
+      .footer-right img {
+        width: 60px;
+      }    
+
+      .opcion {
+        max-width: 100%;
+      }
+    }
